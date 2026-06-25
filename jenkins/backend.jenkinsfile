@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    environment {
+        APP_NAME = 'backend-service'
+        NODE_ENV = 'production'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo "Building ${APP_NAME}..."
+                sh 'go test ./...'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo 'Packaging application'
+                sh 'go build -o backend ./...'
+            }
+        }
+
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'backend', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+    }
+}
