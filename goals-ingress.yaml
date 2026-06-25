@@ -1,0 +1,60 @@
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+
+# metadata:
+#   name: goals-ingress
+
+# spec:
+#   ingressClassName: traefik
+
+#   rules:
+#   - host: goals.local
+
+#     http:
+#       paths:
+
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: goals-frontend-svc
+#             port:
+#               number: 3000
+
+
+#       - path: /goals
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: goals-backend-svc
+#             port:
+#               number: 5001
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+
+metadata:
+  name: goals-ingress
+
+spec:
+  ingressClassName: traefik
+
+  rules:
+  - http:
+      paths:
+
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: goals-frontend-svc
+            port:
+              number: 3000
+
+      - path: /goals
+        pathType: Prefix
+        backend:
+          service:
+            name: goals-backend-svc
+            port:
+              number: 5001

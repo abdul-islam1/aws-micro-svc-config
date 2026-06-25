@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: goals-frontend
+  name: goals-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goals-frontend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: goals-frontend
+    spec:
+      containers:
+      - image: abdul1s/aws-micro-svc-goals-frontend:0.1
+        name: aws-micro-svc-goals-frontend
+        imagePullPolicy: Always
+        env:
+          - name: REACT_APP_BACKEND_URL
+            valueFrom:
+              configMapKeyRef:
+                name: goals-configmap
+                key: REACT_APP_BACKEND_URL
+        ports:
+        - containerPort: 3000
+        resources: {}
+status: {}

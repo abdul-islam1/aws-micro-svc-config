@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: goals-configmap
+data:
+  DATABASE_URL: cluster0.rlu1rxk.mongodb.net
+  DATABASE_NAME: goalsdb
+  REACT_APP_BACKEND_URL: http://192.168.78.171

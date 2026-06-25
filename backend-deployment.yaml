@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goals-backend
+  labels:
+    app: goals-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: goals-backend
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: goals-backend
+    spec:
+      containers:
+      - image: abdul1s/aws-micro-svc-goals-backend:0.1
+        name: aws-micro-svc-goals-backend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        env:
+          - name: DATABASE_USERNAME
+            valueFrom:
+              secretKeyRef:
+                name: goals-secret
+                key: DATABASE_USERNAME
+          - name: DATABASE_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: goals-secret
+                key: DATABASE_PASSWORD
+          - name: DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: goals-configmap
+                key: DATABASE_URL
+          - name: DATABASE_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: goals-configmap
+                key: DATABASE_NAME
+        resources: {}
+status: {}
