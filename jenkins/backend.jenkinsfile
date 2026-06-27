@@ -6,6 +6,7 @@ pipeline {
 
 
         stage('Checkout Application') {
+       
         steps { 
                 dir('backend'){
 
@@ -14,6 +15,7 @@ pipeline {
                  }
             }
         }
+    
         stage('Build Docker Image') {
             steps {
                 echo 'Building Docker Image...'
@@ -46,7 +48,7 @@ pipeline {
             }
         }
 
-}
+
 
     }
 
