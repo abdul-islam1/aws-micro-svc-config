@@ -4,24 +4,7 @@ pipeline {
 
     stages {
 
-stage('Parse Full Payload') {
-    steps {
-        
-        sh 'echo ================================================================='
-        script {
-            // Parse the stringified JSON payload into a Groovy object
-            def payload = readJSON text: env.raw_payload
-            
-            // Access nested properties using standard dot notation
-            def branch = payload.ref
-            def repoUrl = payload.repository.clone_url
-            
-            echo "Branch: ${branch}"
-            echo "Clone URL: ${repoUrl}"
-        }
-        sh 'echo ================================================================='
-    }
-}
+
 
 
 
