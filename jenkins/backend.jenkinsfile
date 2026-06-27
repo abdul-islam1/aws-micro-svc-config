@@ -20,17 +20,7 @@ pipeline {
             }
         }
 
-        stage('Package') {
-            steps {
-                echo 'Packaging application'
-                sh 'go build -o backend ./...'
-            }
-        }
-
-        stage('Archive') {
-            steps {
-                archiveArtifacts artifacts: 'backend', fingerprint: true
-            }
+        
         }
     }
 
