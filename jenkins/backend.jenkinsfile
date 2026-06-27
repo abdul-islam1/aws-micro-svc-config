@@ -26,6 +26,7 @@ pipeline {
             sh 'echo ${BUILD_NUMBER}'
             sh 'echo ${BUILD_NUMBER}'
             sh 'echo ${WORKSPACE}'
+            sh 'printenv'
             
             dir('backend'){
 
