@@ -21,6 +21,8 @@ pipeline {
             sh 'ls jenkins'
             sh 'cat jenkins/backend.jenkinsfile'
             sh 'ls manifest'
+            sh 'echo ${JOB_NAME}'
+            sh 'echo ${WORKSPACE}'
             
             dir('backend'){
 
