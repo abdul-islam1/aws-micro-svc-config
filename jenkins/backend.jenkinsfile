@@ -2,6 +2,7 @@ pipeline {
     agent any
 
 
+    stages {
 
 stage('Parse Full Payload') {
     steps {
@@ -24,7 +25,6 @@ stage('Parse Full Payload') {
 
 
 
-    stages {
         stage('Build') {
             steps {
                 echo 'hello world'
