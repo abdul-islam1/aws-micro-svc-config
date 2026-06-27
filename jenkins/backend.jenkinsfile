@@ -5,40 +5,47 @@ pipeline {
     stages {
 
 
+        stage('Checkout Application') {
+        steps { 
+                dir('backend'){
 
-
-
-        stage('Build') {
+                git branch: 'main',
+                    url: 'https://github.com/abdul-islam1/aws-micro-svc-goals-backend.git'
+                 }
+            }
+        }
+        stage('Build Docker Image') {
             steps {
-                echo 'hello world'
+                echo 'Building Docker Image...'
+            }
+        }
+        stage('Dockerhub Login') {
+            steps {
+                echo 'Logging into Docker Hub...'
+            }
+        }
+        stage('Push Image to Docker Hub') {
+            steps {
+                echo 'Pushing image to Docker Hub...'
+            }
+        }
+        stage('Dockerhub Logout') {
+            steps {
+                echo 'Logging out of Docker Hub...'
+            }
+        }
+        stage('Deleting The Image') {
+            steps {
+                echo 'Deleting image...'
+
+            }
+        }
+        stage('Update Deployment Manifest') {
+            steps {
+                echo 'Updating deployment manifest...'
             }
         }
 
-         stage('Checkout Application') {
-    steps {
-            sh 'pwd'
-            sh 'ls -la'
-            sh 'ls jenkins'
-            sh 'cat jenkins/backend.jenkinsfile'
-            sh 'ls manifest'
-            sh 'echo ${BUILD_NUMBER}'
-            sh 'echo ${BUILD_NUMBER}'
-            sh 'echo ${BUILD_NUMBER}'
-            sh 'echo ${BUILD_NUMBER}'
-            sh 'echo ${WORKSPACE}'
-            sh 'printenv'
-            
-            dir('backend'){
-
-        git branch: 'main',
-            url: 'https://github.com/abdul-islam1/aws-micro-svc-goals-backend.git'
-            sh 'pwd'
-            sh 'ls -la'
-            }
-
-            sh 'pwd'
-            sh 'ls -la'
-    }
 }
 
     }
