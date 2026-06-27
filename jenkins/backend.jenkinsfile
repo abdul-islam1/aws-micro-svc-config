@@ -18,7 +18,8 @@ pipeline {
             sh 'pwd'
             sh 'ls -la'
             sh 'ls jenkins'
-            sh 'cat manifest'
+            sh 'cat jenkins/backend.jenkinsfile'
+            sh 'ls manifest'
         git branch: 'main',
             url: 'https://github.com/abdul-islam1/aws-micro-svc-goals-backend.git'
             sh 'pwd'
