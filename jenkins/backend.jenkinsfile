@@ -36,11 +36,13 @@ pipeline {
     stages {
 
       stage('Debug Payload') {
-            steps {
-                echo "Payload:"
-                echo "${payload}"
-            }
-        }
+    steps {
+        echo "Action: ${action}"
+        echo "Merged: ${merged}"
+        echo "Base branch: ${base}"
+        echo "Source branch: ${head}"
+    }
+}
 
         stage('Build') {
             steps {
