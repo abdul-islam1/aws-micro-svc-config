@@ -1,22 +1,14 @@
 pipeline {
     agent any
 
-    environment {
-        APP_NAME = 'backend-service'
-        NODE_ENV = 'production'
-    }
+
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+    
 
         stage('Build') {
             steps {
-                echo "Building ${APP_NAME}..."
                 sh 'go test ./...'
             }
         }
