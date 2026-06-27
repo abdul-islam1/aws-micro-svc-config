@@ -13,6 +13,15 @@ pipeline {
             }
         }
 
+         stage('Checkout Application') {
+    steps {
+            sh 'pwd'
+            sh 'ls -la'
+        git branch: 'main',
+            url: 'https://github.com/YOUR-ORG/goals-backend.git'
+    }
+}
+
     }
 
     post {
