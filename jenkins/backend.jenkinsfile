@@ -18,7 +18,9 @@ pipeline {
             sh 'pwd'
             sh 'ls -la'
         git branch: 'main',
-            url: 'https://github.com/YOUR-ORG/goals-backend.git'
+            url: 'https://github.com/abdul-islam1/aws-micro-svc-goals-backend.git'
+            sh 'pwd'
+            sh 'ls -la'
     }
 }
 
