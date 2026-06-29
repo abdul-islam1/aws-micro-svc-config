@@ -17,7 +17,9 @@ pipeline {
     
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t abdul1s/aws-micro-svc-goals-backend:${BUILD_NUMBER} .'
+                sh 'pwd'
+                sh 'ls -la'
+                // sh 'docker build -t abdul1s/aws-micro-svc-goals-backend:${BUILD_NUMBER} .'
                 sh 'docker images'
             }
         }
